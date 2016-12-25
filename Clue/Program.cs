@@ -28,15 +28,14 @@ namespace Clue
             SetupCards(_CategoriesController.GetCategory(3),
                 new string[] { "Col. Mustard", "Prof. Plum", "Mr. Green", "Mrs. Peacock", "Miss Scarlett", "Mrs. White" });
 
-            foreach(Card card in _CardController.GetCard())
-            {
-                Console.WriteLine("{0} is a {1} card with id {2}", card.Name, card.Category.Name, card.Id);
-            }
 
-            Console.WriteLine("Again below are all the weapons.");
-            foreach (Card card in _CardController.GetCard(_CategoriesController.GetCategory(2)))
+            foreach(Category category in _CategoriesController.GetCategory())
             {
-                Console.WriteLine(card.Name);
+                Console.WriteLine("Below are the cards in the {0} stack", category.Name);
+                foreach (Card card in _CardController.GetCard(category))
+                {
+                    Console.WriteLine(card.Name);
+                }
             }
             Console.ReadLine();
 
