@@ -16,6 +16,11 @@ namespace Clue.Controllers
             _context = new GameMemory();
         }
 
+        public ICollection<Card> GetCard(Player player)
+        {
+            return _context.Cards.Where(c => c.Player == player).ToList();
+        }
+
         public ICollection<Card> GetCard(Category category)
         {
             return _context.Cards.Where(c => c.Category == category).ToList();
